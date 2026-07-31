@@ -7,6 +7,7 @@
   const DEFAULT_BG_HEX = "#0f0f23";
   const DEFAULT_BG_OPACITY = 85;
   const DEFAULT_LANG = "en";
+  const DEFAULT_TEXT_MODE = "white";
 
   const I18N = {
     es: {
@@ -29,7 +30,6 @@
       buttonHexLabel: "Hex de color del botón",
       textLabel: "Texto",
       textAriaLabel: "Color del texto",
-      textDefault: "Predeterminado",
       textBlack: "Negro",
       textWhite: "Blanco",
       sizeLabel: "Tamaño",
@@ -55,7 +55,6 @@
       buttonHexLabel: "Button color hex",
       textLabel: "Text",
       textAriaLabel: "Text color",
-      textDefault: "Default",
       textBlack: "Black",
       textWhite: "White",
       sizeLabel: "Size",
@@ -291,9 +290,7 @@
   };
 
   const applyTextMode = (mode) => {
-    if (mode === "black") widgetEl.style.setProperty("--todo-text", "#000000");
-    else if (mode === "white") widgetEl.style.setProperty("--todo-text", "#ffffff");
-    else widgetEl.style.removeProperty("--todo-text");
+    widgetEl.style.setProperty("--todo-text", mode === "black" ? "#000000" : "#ffffff");
     textModeSelect.value = mode;
   };
 
@@ -344,7 +341,7 @@
   };
 
   const setTextMode = (mode) => {
-    settings.textColor = mode === "default" ? null : mode;
+    settings.textColor = mode;
     applyTextMode(mode);
     storeSet(SETTINGS_KEY, settings);
   };
@@ -405,7 +402,7 @@
         if (settings.accentColor) applyAccentColor(settings.accentColor);
         else syncColorInputs(accentPicker, accentText, normalizeHex(getComputedStyle(widgetEl).getPropertyValue("--todo-accent")) || "#7c3aed");
 
-        applyTextMode(settings.textColor || "default");
+        applyTextMode(settings.textColor || DEFAULT_TEXT_MODE);
 
         if (settings.fontSize) applyFontSize(settings.fontSize);
         else {
