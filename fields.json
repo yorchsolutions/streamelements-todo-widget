@@ -1,0 +1,30 @@
+{
+  "title": {
+    "type": "text",
+    "label": "Título del widget",
+    "value": "To-Do"
+  },
+  "backgroundColor": {
+    "type": "colorpicker",
+    "label": "Color de fondo",
+    "value": "#0f0f23"
+  },
+  "textColor": {
+    "type": "colorpicker",
+    "label": "Color de texto",
+    "value": "#e2e8f0"
+  },
+  "accentColor": {
+    "type": "colorpicker",
+    "label": "Color de acento",
+    "value": "#7c3aed"
+  },
+  "fontSize": {
+    "type": "slider",
+    "label": "Tamaño de fuente (px)",
+    "value": 15,
+    "min": 10,
+    "max": 32,
+    "steps": 1
+  }
+}
