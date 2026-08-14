@@ -44,6 +44,7 @@ Este widget está pensado para que lo instales con confianza:
 | `widget.js` | La lógica que hace funcionar el checklist. Se pega en la pestaña **JS**. |
 | `fields.json` | Las opciones configurables (título, colores, tamaño de fuente) que StreamElements muestra en la pestaña **Fields**. |
 | `preview.html` | Una versión de prueba para ver el widget funcionando en cualquier navegador, sin necesidad de StreamElements. |
+| `index.html` | Igual a `preview.html`, pensado para la demo publicada con GitHub Pages. |
 
 ## 🧪 Probarlo antes de instalar
 
@@ -141,6 +142,7 @@ This widget is built so you can install it with confidence:
 | `widget.js` | The logic that makes the checklist work. Paste it into the **JS** tab. |
 | `fields.json` | The configurable options (title, colors, font size) shown in StreamElements' **Fields** tab. |
 | `preview.html` | A standalone version to test the widget in any browser, without needing StreamElements. |
+| `index.html` | Same as `preview.html`, used for the demo published via GitHub Pages. |
 
 ## 🧪 Try it before installing
 

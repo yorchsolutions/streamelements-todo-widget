@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>To-Do Widget — Preview</title>
+    <link rel="stylesheet" href="widget.css" />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0d0d14;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="todo-widget">
+      <div id="todo-header">
+        <div class="todo-title-group">
+          <span class="todo-dot" aria-hidden="true"></span>
+          <h1 id="todo-title">To-Do</h1>
+        </div>
+        <div class="todo-header-actions">
+          <button
+            id="todo-settings-btn"
+            type="button"
+            data-i18n-aria-label="settingsBtnLabel"
+            aria-label="Configure colors"
+            aria-expanded="false"
+            aria-controls="todo-settings-panel"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 9.09H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 4.6a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+          <button
+            id="todo-toggle-btn"
+            type="button"
+            data-i18n-aria-label="toggleBtnLabel"
+            aria-label="Show or hide controls"
+            aria-expanded="true"
+            aria-controls="todo-input-row"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="todo-settings-panel" class="hidden">
+        <div class="todo-collapse-inner">
+          <div class="todo-settings-row">
+            <label for="todo-language" data-i18n="languageLabel">Language</label>
+            <select id="todo-language" data-i18n-aria-label="languageAriaLabel" aria-label="Interface language">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
+          </div>
+          <div class="todo-settings-row">
+            <label for="todo-bg-color-text" data-i18n="bgLabel">Background</label>
+            <input type="color" id="todo-bg-color-picker" data-i18n-aria-label="bgPickerLabel" aria-label="Background color picker" />
+            <input type="text" id="todo-bg-color-text" placeholder="#0f0f23" maxlength="7" data-i18n-aria-label="bgHexLabel" aria-label="Background color hex" />
+          </div>
+          <div class="todo-settings-row">
+            <label for="todo-bg-opacity" data-i18n="opacityLabel">Opacity</label>
+            <input type="range" id="todo-bg-opacity" min="20" max="100" step="1" data-i18n-aria-label="opacityAriaLabel" aria-label="Background opacity" />
+            <span id="todo-bg-opacity-value" class="todo-settings-value">85%</span>
+          </div>
+          <div class="todo-settings-row">
+            <label for="todo-accent-color-text" data-i18n="buttonLabel">Button</label>
+            <input type="color" id="todo-accent-color-picker" data-i18n-aria-label="buttonPickerLabel" aria-label="Button color picker" />
+            <input type="text" id="todo-accent-color-text" placeholder="#7c3aed" maxlength="7" data-i18n-aria-label="buttonHexLabel" aria-label="Button color hex" />
+          </div>
+          <div class="todo-settings-row">
+            <label for="todo-text-mode" data-i18n="textLabel">Text</label>
+            <select id="todo-text-mode" data-i18n-aria-label="textAriaLabel" aria-label="Text color">
+              <option value="white" data-i18n="textWhite" selected>White</option>
+              <option value="black" data-i18n="textBlack">Black</option>
+            </select>
+          </div>
+          <div class="todo-settings-row">
+            <label for="todo-font-size" data-i18n="sizeLabel">Size</label>
+            <input type="range" id="todo-font-size" min="10" max="28" step="1" data-i18n-aria-label="sizeAriaLabel" aria-label="Font size" />
+            <span id="todo-font-size-value" class="todo-settings-value">15px</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="todo-input-row">
+        <div class="todo-collapse-inner">
+          <label for="todo-input" class="sr-only" data-i18n="inputLabel">New task</label>
+          <input id="todo-input" type="text" placeholder="New task..." maxlength="120" data-i18n-placeholder="inputPlaceholder" />
+          <button id="todo-add-btn" type="button" data-i18n="addBtn">Add</button>
+        </div>
+      </div>
+
+      <ul id="todo-list"></ul>
+    </div>
+
+    <script src="widget.js"></script>
+  </body>
+</html>
